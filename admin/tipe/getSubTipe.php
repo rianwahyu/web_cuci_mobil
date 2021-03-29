@@ -4,12 +4,10 @@ include '../../connection.php';
 
 class data{}
 
-
-$subTipeArray = array();
-$subTipeHargaArray = array();
+$idKategori = $_POST['idKategori'];
 $myArray = array();
 
-$query = "SELECT * FROM jenisKendaraan";
+$query = "SELECT * FROM jenisKendaraan WHERE idKategori='$idKategori' ";
 $result = mysqli_query($dbc, $query);
 if (mysqli_num_rows($result) >= 1) {
 
@@ -37,8 +35,7 @@ if (mysqli_num_rows($result) >= 1) {
                 'idHarga' => $datas['idHarga'],
                 'keterangan' => $datas['keterangan'],
                 'harga' => $datas['harga']);
-        }
-        
+        }        
     }
 
     $response = new data();
