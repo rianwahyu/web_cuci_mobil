@@ -2,10 +2,10 @@
 -- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 28 Mar 2021 pada 17.03
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.3.23
+-- Host: localhost
+-- Generation Time: Mar 29, 2021 at 12:10 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `administrator`
+-- Table structure for table `administrator`
 --
 
 CREATE TABLE `administrator` (
@@ -38,7 +38,7 @@ CREATE TABLE `administrator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `administrator`
+-- Dumping data for table `administrator`
 --
 
 INSERT INTO `administrator` (`idAdmin`, `namaLengkap`, `email`, `password`, `status`, `tanggalBuat`, `token`) VALUES
@@ -47,7 +47,27 @@ INSERT INTO `administrator` (`idAdmin`, `namaLengkap`, `email`, `password`, `sta
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenisharga`
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `idBanner` int(11) NOT NULL,
+  `namaBanner` varchar(100) NOT NULL,
+  `file` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`idBanner`, `namaBanner`, `file`, `status`) VALUES
+(4, 'testing', 'ed02f7074cf1140f0ff35815c3f68031.png', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenisharga`
 --
 
 CREATE TABLE `jenisharga` (
@@ -58,17 +78,19 @@ CREATE TABLE `jenisharga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jenisharga`
+-- Dumping data for table `jenisharga`
 --
 
 INSERT INTO `jenisharga` (`idHarga`, `idJenis`, `keterangan`, `harga`) VALUES
 (1, 1, 'Air Dari customer', 45000),
-(2, 1, 'Include Air', 50000);
+(2, 1, 'Include Air', 50000),
+(3, 2, 'Air dari customer', 50000),
+(4, 2, 'Include Air', 55000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jeniskendaraan`
+-- Table structure for table `jeniskendaraan`
 --
 
 CREATE TABLE `jeniskendaraan` (
@@ -78,16 +100,17 @@ CREATE TABLE `jeniskendaraan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jeniskendaraan`
+-- Dumping data for table `jeniskendaraan`
 --
 
 INSERT INTO `jeniskendaraan` (`idJenis`, `idKategori`, `namaJenis`) VALUES
-(1, 1, 'City Car \r\n');
+(1, 1, 'City Car'),
+(2, 1, 'Car Lol');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategorikendaraan`
+-- Table structure for table `kategorikendaraan`
 --
 
 CREATE TABLE `kategorikendaraan` (
@@ -97,7 +120,7 @@ CREATE TABLE `kategorikendaraan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kategorikendaraan`
+-- Dumping data for table `kategorikendaraan`
 --
 
 INSERT INTO `kategorikendaraan` (`idKategori`, `namaKategori`, `foto`) VALUES
@@ -107,7 +130,7 @@ INSERT INTO `kategorikendaraan` (`idKategori`, `namaKategori`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -126,53 +149,65 @@ CREATE TABLE `member` (
 --
 
 --
--- Indeks untuk tabel `administrator`
+-- Indexes for table `administrator`
 --
 ALTER TABLE `administrator`
   ADD PRIMARY KEY (`idAdmin`);
 
 --
--- Indeks untuk tabel `jenisharga`
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`idBanner`);
+
+--
+-- Indexes for table `jenisharga`
 --
 ALTER TABLE `jenisharga`
   ADD PRIMARY KEY (`idHarga`);
 
 --
--- Indeks untuk tabel `jeniskendaraan`
+-- Indexes for table `jeniskendaraan`
 --
 ALTER TABLE `jeniskendaraan`
   ADD PRIMARY KEY (`idJenis`);
 
 --
--- Indeks untuk tabel `kategorikendaraan`
+-- Indexes for table `kategorikendaraan`
 --
 ALTER TABLE `kategorikendaraan`
   ADD PRIMARY KEY (`idKategori`);
 
 --
--- Indeks untuk tabel `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`idMember`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `jenisharga`
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `idBanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `jenisharga`
 --
 ALTER TABLE `jenisharga`
-  MODIFY `idHarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idHarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `jeniskendaraan`
+-- AUTO_INCREMENT for table `jeniskendaraan`
 --
 ALTER TABLE `jeniskendaraan`
-  MODIFY `idJenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idJenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `kategorikendaraan`
+-- AUTO_INCREMENT for table `kategorikendaraan`
 --
 ALTER TABLE `kategorikendaraan`
   MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
