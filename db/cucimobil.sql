@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2021 at 11:43 AM
+-- Generation Time: Apr 01, 2021 at 11:47 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.3.23
 
@@ -84,6 +84,43 @@ CREATE TABLE `booking` (
   `waktuOrder` time NOT NULL,
   `statusOrder` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`orderID`, `userID`, `tipeKendaraan`, `idKategori`, `idJenis`, `idHarga`, `alamatOrder`, `latitude`, `longitude`, `tanggalOrder`, `waktuOrder`, `statusOrder`) VALUES
+('CML0000001', 'XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 'Toyota Rush', 1, 1, 1, 'Jl. Muncul No.168, Jl. Raya, Gedangan, Kec. Gedangan, Kabupaten Sidoarjo, Jawa Timur 61254, Indonesia, Indonesia', '-7.383946768114289', '112.72341141477227', '2021-03-31', '09:50:00', 1),
+('CML0000002', 'XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 'Rush', 1, 1, 1, 'Griya Permata Gedangan E3-38, Sikep, Keboansikep, Gedangan, Sidoarjo Regency, East Java 61254, Indonesia, Indonesia', '-7.38271819460467', '112.71898375824094', '2021-04-01', '15:12:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookingValue`
+--
+
+CREATE TABLE `bookingValue` (
+  `id` int(11) NOT NULL,
+  `orderID` varchar(10) NOT NULL,
+  `keterangan` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `tanggalValue` datetime NOT NULL,
+  `userAdmin` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookingValue`
+--
+
+INSERT INTO `bookingValue` (`id`, `orderID`, `keterangan`, `status`, `tanggalValue`, `userAdmin`) VALUES
+(2, 'CML0000001', 'Pesanan telah dibuat', 0, '2021-03-31 04:51:17', ''),
+(3, 'CML0000001', 'Pesanan telah diproses', 1, '2021-03-31 04:51:17', ''),
+(4, 'CML0000001', 'Cimoling dalam perjalanan', 2, '2021-03-31 04:51:17', ''),
+(5, 'CML0000001', 'Cimoling mencuci kendaraan', 3, '2021-03-31 04:51:17', ''),
+(6, 'CML0000001', 'Proses cuci kendaraan selesai', 4, '2021-03-31 04:51:17', ''),
+(7, 'CML0000001', 'Pembayaran COD diterima cimoling', 5, '2021-03-31 04:51:17', ''),
+(8, 'CML0000001', 'Order Selesai. Terima kasih telah menggunakan cimoling', 6, '2021-03-31 04:51:17', ''),
+(9, 'CML0000002', 'Pesanan telah dibuat', 0, '2021-04-01 10:12:39', '');
 
 -- --------------------------------------------------------
 
@@ -170,7 +207,30 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`idMember`, `namaLengkap`, `alamat`, `noHp`, `email`, `password`, `token`, `tanggalRegistrasi`) VALUES
-('XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 'Rian Wahyu', ' ', '', 'riansahadah@gmail.com', '256fa07ec1bff2c9ce5e104ad65cb36a', ' ', '2021-03-30 09:34:04');
+('XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 'Rian Wahyu', ' ', '', 'riansahadah@gmail.com', '256fa07ec1bff2c9ce5e104ad65cb36a', 'e4HTrWSPQ_Ka3He_yjI0Pk:APA91bE79ZNNKCRJ1RSoqaDJjRWNSf8xcf8siLiCLiFfKsH2el3aXtWsJvm4P2vPJmxTe_NqeurytqDermmUU5ccA_YnaQtfA5k_TsXg5hgMheVuQB8cOGuKGTftZCrRjfVm42M-9HR8', '2021-03-30 09:34:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifikasi`
+--
+
+CREATE TABLE `notifikasi` (
+  `idNotifikasi` int(11) NOT NULL,
+  `judul` varchar(200) NOT NULL,
+  `pesan` text NOT NULL,
+  `tanggalNotifikasi` datetime NOT NULL DEFAULT current_timestamp(),
+  `userID` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`idNotifikasi`, `judul`, `pesan`, `tanggalNotifikasi`, `userID`, `status`) VALUES
+(2, 'tes 2', 'ini pesan. 2', '2021-04-01 14:15:58', 'XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 0),
+(3, 'tes 3', 'ini pesan. 3', '2021-04-01 14:15:58', 'XEZXSSv2r0bbCu1FIrdOvrFoMCA3', 0);
 
 -- --------------------------------------------------------
 
@@ -213,6 +273,12 @@ ALTER TABLE `booking`
   ADD PRIMARY KEY (`orderID`);
 
 --
+-- Indexes for table `bookingValue`
+--
+ALTER TABLE `bookingValue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jenisharga`
 --
 ALTER TABLE `jenisharga`
@@ -237,6 +303,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`idMember`);
 
 --
+-- Indexes for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  ADD PRIMARY KEY (`idNotifikasi`);
+
+--
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -251,6 +323,12 @@ ALTER TABLE `pembayaran`
 --
 ALTER TABLE `banner`
   MODIFY `idBanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `bookingValue`
+--
+ALTER TABLE `bookingValue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `jenisharga`
@@ -269,6 +347,12 @@ ALTER TABLE `jeniskendaraan`
 --
 ALTER TABLE `kategorikendaraan`
   MODIFY `idKategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `notifikasi`
+--
+ALTER TABLE `notifikasi`
+  MODIFY `idNotifikasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
