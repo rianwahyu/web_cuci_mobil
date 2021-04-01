@@ -12,8 +12,10 @@ if (mysqli_num_rows($res) < 1) {
 } else {
     $id = $data["orderID"];
     $id = substr($id, 3);
-    $orderID = $kode . str_pad($id + 1, 6, 0, STR_PAD_LEFT);
+    $orderID = $kode . str_pad($id + 1, 7, 0, STR_PAD_LEFT);
 }
+
+//echo $orderID;
 
 $userID = $_POST['userID'];
 $tipeKendaraan = $_POST['tipeKendaraan'];
