@@ -5,8 +5,9 @@ class data{}
 $userID = $_POST['userID'];
 
 $query = " SELECT * FROM `member` WHERE idMember='$userID' ";
-$result = mysqli_close($dbc, $query);
+$result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
+//echo $query;
 if (!empty($row)) {
     $response = new data();
     $response->success = true;
