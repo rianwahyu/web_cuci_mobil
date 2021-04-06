@@ -1,5 +1,6 @@
 <?php 
 
+date_default_timezone_set('Asia/Jakarta');
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
 $dbc = mysqli_connect("localhost","root","","cucimobil");

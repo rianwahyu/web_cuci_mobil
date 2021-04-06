@@ -7,6 +7,9 @@ $userID = $_POST['userID'];
 
 $keterangan = "Cimoling selesai mencuci kendaraan";
 
+
+
+
 $query = "";
 $query = $query. " UPDATE booking SET statusOrder='5' WHERE orderID='$orderID' ; ";
 $query = $query. " INSERT INTO bookingValue (orderID, keterangan, status, userAdmin ) 
