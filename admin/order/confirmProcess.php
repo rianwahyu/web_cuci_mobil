@@ -5,7 +5,7 @@ include '../../connection.php';
 $orderID = $_POST['orderID'];
 $userID = $_POST['userID'];
 
-$keterangan = "Cimoling menuju lokasi pelanggan";
+$keterangan = "Cimoling konfirmasi order dan menuju lokasi pelanggan";
 
 $query = "";
 $query = $query. " UPDATE booking SET statusOrder='2' WHERE orderID='$orderID' ; ";
