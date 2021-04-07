@@ -42,6 +42,4 @@ if (!empty($row)) {
 }
 
 
-
-
 // mysqli_close($dbc);
