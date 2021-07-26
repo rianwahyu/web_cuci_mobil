@@ -10,7 +10,7 @@ $keteranganDetail = "Cimoling telah sampai di lokasi anda dan bersiap untuk menc
 
 $query = "";
 $query = $query. " UPDATE booking SET statusOrder='3' WHERE orderID='$orderID' ; ";
-$query = $query. " INSERT INTO bookingValue (orderID, keterangan, status, userAdmin ) 
+$query = $query. " INSERT INTO bookingvalue (orderID, keterangan, status, userAdmin ) 
 VALUES ('$orderID', '$keterangan', '3', '$userID') ; ";
 
 $tokenMember = getTokenMember($orderID);

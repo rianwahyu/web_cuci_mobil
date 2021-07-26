@@ -10,7 +10,7 @@ $keteranganDetail = "Selamat Pesanan telah di konfirmasi oleh admin, mohon menun
 
 $query = "";
 $query = $query. " UPDATE booking SET statusOrder='2' WHERE orderID='$orderID' ; ";
-$query = $query. " INSERT INTO bookingValue (orderID, keterangan, status, userAdmin ) 
+$query = $query. " INSERT INTO bookingvalue (orderID, keterangan, status, userAdmin ) 
 VALUES ('$orderID', '$keterangan', '2', '$userID') ; ";
 
 $tokenMember = getTokenMember($orderID);

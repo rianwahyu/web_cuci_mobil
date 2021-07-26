@@ -5,13 +5,14 @@ include '../../connection.php';
 $orderID = $_POST['orderID'];
 $userID = $_POST['userID'];
 
-$keterangan = "Pesanan telah di proses admin";
-$keteranganDetail = "Selamat Pesanan telah di proses admin, mohon menunggu konfirmasi dari admin";
+$keterangan = "Order dibatalkan";
+$keteranganDetail = $_POST['keteranganDetail'];
 
 $query = "";
-$query = $query. " UPDATE booking SET statusOrder='1' WHERE orderID='$orderID' ; ";
-$query = $query. " INSERT INTO bookingvalue (orderID, keterangan, status, userAdmin ) 
-VALUES ('$orderID', '$keterangan', '1', '$userID') ; ";
+$query = $query. " UPDATE booking SET statusOrder='7' WHERE orderID='$orderID' ; ";
+$query = $query. " INSERT INTO bookingValue (orderID, keterangan, status, userAdmin ) 
+VALUES ('$orderID', '$keterangan', '7', '$userID') ; ";
+
 $tokenMember = getTokenMember($orderID);
 $idMember = getMemberID($orderID);
 
@@ -22,7 +23,6 @@ if (mysqli_multi_query($dbc, $query)) {
     ));
 
     sendNotif($keterangan, $keteranganDetail, $tokenMember, $idMember);
-
 }else{
     echo json_encode(array(
         "success" => false,
@@ -110,5 +110,4 @@ function getMemberID($orderID){
 
     return $row['idMember'];
 }
-
-mysqli_close($dbc);
+//mysqli_close($dbc);

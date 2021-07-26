@@ -18,6 +18,7 @@ if (!empty($row)) {
     $response->success = TRUE;
     $response->message ="Selamat Datang Admin ";
     $response->id = $row['idAdmin'];
+    $response->nama = $row['namaLengkap'];
     $response->access = 'Admin';
     die(json_encode($response));
 

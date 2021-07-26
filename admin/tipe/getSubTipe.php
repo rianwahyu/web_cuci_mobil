@@ -7,7 +7,7 @@ class data{}
 $idKategori = $_POST['idKategori'];
 $myArray = array();
 
-$query = "SELECT * FROM jenisKendaraan WHERE idKategori='$idKategori' ";
+$query = "SELECT * FROM jeniskendaraan WHERE idKategori='$idKategori' ";
 $result = mysqli_query($dbc, $query);
 if (mysqli_num_rows($result) >= 1) {
 

@@ -12,7 +12,7 @@ INNER JOIN member b ON a.userID = b.idMember
 INNER JOIN kategorikendaraan c ON a.idKategori = c.idKategori
 INNER JOIN jeniskendaraan d ON a.idJenis = d.idJenis
 INNER JOIN jenisharga e ON a.idHarga = e.idHarga 
-WHERE a.userID = '$userID' AND a.statusOrder !='6' ";
+WHERE a.userID = '$userID' /*AND ( a.statusOrder !='6' OR a.statusOrder !='7' )*/ ";
 
 $result = mysqli_query($dbc, $query);
 if (mysqli_num_rows($result) >= 1) {

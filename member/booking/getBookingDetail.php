@@ -16,7 +16,7 @@ WHERE a.orderID = '$orderID' ";
 $result = mysqli_query($dbc, $query);
 $row = mysqli_fetch_array($result);
 
-$query2 = "SELECT * FROM `bookingValue` WHERE orderID='$orderID' ";
+$query2 = "SELECT * FROM `bookingvalue` WHERE orderID='$orderID' ";
 $result2 = mysqli_query($dbc, $query2);
 
 if (!empty($row)) {

@@ -22,7 +22,7 @@ if (!empty($row)) {
 
     $query = "";
     $query = $query . " UPDATE booking SET statusOrder='6' WHERE orderID='$orderID' ; ";
-    $query = $query . " INSERT INTO bookingValue (orderID, keterangan, status, userAdmin ) 
+    $query = $query . " INSERT INTO bookingvalue (orderID, keterangan, status, userAdmin ) 
                         VALUES ('$orderID', '$keterangan', '6', '$userID') ; ";
 
     $query = $query . " INSERT INTO laporan (orderID, hargaFinal, hargaKetFinal, tanggalOrder, tanggalSelesaiOrder  ) 

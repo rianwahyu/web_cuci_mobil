@@ -6,7 +6,7 @@ class data{}
 
 $statusOrder = $_POST['statusOrder'];
 
-$query = " SELECT a.orderID, a.userID, a.tipeKendaraan , a.alamatOrder, a.latitude, a.longitude, a.tanggalOrder, a.waktuOrder, a.statusOrder, e.harga, e.keterangan as ketHarga, b.namaLengkap
+$query = " SELECT a.orderID, a.userID, a.tipeKendaraan , a.alamatOrder, a.latitude, a.longitude, a.tanggalOrder, a.waktuOrder, a.statusOrder, e.harga, e.keterangan as ketHarga, b.namaLengkap, b.noHp
 FROM booking a 
 INNER JOIN member b ON a.userID = b.idMember
 INNER JOIN kategorikendaraan c ON a.idKategori = c.idKategori
