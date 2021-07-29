@@ -9,7 +9,6 @@ $keterangan = "Cimoling selesai mencuci kendaraan";
 $keteranganDetail = "Selamat Cimoling telah selesai mencuci kendaraan anda";
 
 
-
 $query = "";
 $query = $query. " UPDATE booking SET statusOrder='5' WHERE orderID='$orderID' ; ";
 $query = $query. " INSERT INTO bookingvalue (orderID, keterangan, status, userAdmin ) 
